@@ -11,7 +11,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
     assert(argc > 1);
     string email = argv[1];
-    uint32_t money = (argc > 2) ? atoi(argv[2]) : 1;
+    uint32_t money = (argc > 2) ? atoi(argv[2]) : 0;
 
     FILE* userfile = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/accounts/" + email).c_str(), "r");
     if (userfile == 0) {
@@ -32,7 +32,6 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     fread(&code, sizeof(uint32_t), 1, userfile); // money
-    money += code;
     fclose(userfile);
 
     userfile = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/accounts/" + email).c_str(), "r+");

@@ -1,4 +1,5 @@
-cgi-bin/*
+cgi-bin*
+*.cgi
 bin/*
 candybank/storage/accounts/*@*
 candybank/storage/accounts/.usednames
