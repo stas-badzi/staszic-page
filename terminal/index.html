@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/terminal.css">
+</head>
+<body>
+    <div id="screen-wrapper">
+        <p id="screen" class="screen monospace"><span class="style space">#</span></p>
+        <p id="fake-screen-h" class="screen monospace">
+            <span class="style">#</span><span class="style">#</span>
+        </p>
+        <p id="fake-screen-w" class="screen monospace">
+            <span class="style">#</span><span class="style">#</span>
+        </p>
+    </div>
+
+    <textarea id="pageinput" oninput="HandleInput()" autofocus></textarea>
+    <script src="/scripts/cookie.js"></script>
+    <script src="/scripts/key.js"></script>
+    <script src="/scripts/myjson.js"></script>
+    <script src="/scripts/terminal.js"></script>
+</body>
+</html>

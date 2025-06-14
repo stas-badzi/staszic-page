@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="description" content="Secret Databas (WIP)" />
+  <meta charset="utf-8">
+  <title>FactoryRush Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="sigma">
+  <style> u {color:blue} </style>
+</head>
+
+<body>
+  
+<div class="container">
+  <a href="./server.dat">
+	  <p> Some data <p>
+  </a>
+  <div onclick="increment()">
+	  <u>trigger incrementation of data</u>
+	</div>
+  	<p>Polska g&#x00F3;r&#x0105;: &#x0105;&#x0119;&#x0107;&#x0142;&#x00F3;&#x017C;&#x017A;&#x015B;</p>
+	<br>
+	<div id="output">NOTHING</div>
+
+<script>
+
+	function set_cookie(name, value) {
+		document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; SameSite=Strict; domain=${window.location.host}; path=/`
+	}
+
+	function get(id) {
+		return document.getElementById(id);
+	}
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && xhr.status == 200) {
+			increment2();
+		}
+	};
+	function increment() {
+		xhr.open("GET", "php-bin/send.php?send=test->1");
+		xhr.send();
+	}
+
+	let xhr2 = new XMLHttpRequest();
+	xhr2.onreadystatechange = function() {
+		if (xhr2.readyState == 4 && xhr2.status == 200) {
+			get("output").innerHTML = decodeURIComponent(xhr2.responseText);
+			console.log(decodeURIComponent(xhr2.responseText));
+		}
+	};
+	function increment2() {
+		xhr2.open ("GET", "cgi-bin/increment.cgi");
+		xhr2.send();
+	}
+
+</script>

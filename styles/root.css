@@ -1,0 +1,161 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  color: #222;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+h1, h2 {
+  color: #0055aa;
+  margin-bottom: 10px;
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: #ddd;
+  margin-bottom: 20px;
+}
+
+a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  display: grid;
+  gap: 20px;
+}
+
+.platforms, .iframe-section, .terminals, .howto, .issues, .binaries, .source-code {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.iframe-section h1 {
+  font-size: x-large;
+}
+
+.iframe-section h1 span {
+  color: cornflowerblue;
+}
+
+.download-section {
+  display: flex;
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.binaries {
+  display: flex;
+  font-size: x-large;
+  align-self: right;
+  width: fit-content;
+}
+
+.source-code {
+  display: flex;
+  width: fit-content;
+  align-self: left;
+  font-size: x-large;
+  align-items: center;
+}
+
+.source-code svg {
+  align-self: center;
+}
+
+ul {
+  list-style: square inside;
+  padding-left: 1em;
+}
+
+.platform-icon {
+  width: auto;
+  height: 5em;
+  display: flex;
+}
+
+.br-small {
+  display: none;
+}
+
+.demo-frame {
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+}
+
+#windows-big {
+  height: 5em;
+  display: flex;
+  width: auto;
+}
+
+#lw-sep {
+  width: 5em;
+  height: 1em;
+  display: flex;
+}
+
+#linux-big {
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+#lm-sep {
+  width: 5em;
+  height: 1em;
+  display: flex;
+}
+
+#macos-big {
+  width: auto;
+  height: auto;
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .demo-frame {
+    height: 200px;
+  }
+
+  .br-small {
+    display: block;
+  }
+
+  .download-section {
+    display: block;
+  }
+}
+
+@media (max-width: 408px) {
+
+  #lw-sep {
+    width: 0;
+  }
+  #lm-sep {
+    width: 0;
+  }
+}

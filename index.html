@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TermPaint</title>
+  <link rel="stylesheet" href="styles/root.css" />
+</head>
+<body>
+  <header>
+    <h1>TermPaint (Work in progress)</h1>
+  </header>
+
+  <main>
+    <div class="download-section">
+      <section class="source-code">
+        <a href="https://github.com/stas-badzi/c-c-collab">
+          <p>Kod źródłowy</p>
+          <svg width="98" height="96" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#24292f"/></svg>
+        </a>
+      </section>
+      <br class="br-small">
+      <section class="binaries">
+        <h2>Skompilowany Program:</h2>
+        <ul>
+          <li><a href="https://github.com/stas-badzi/c-c-collab/releases/latest">Github</a></li>
+          <li><a onclick="SteamUnavailable()" href="#">Steam</a></li>
+          <li><a onclick="MicrosoftUnavailable()" href="#">Microsoft Store</a></li>
+          <li><a onclick="AppStoreUnavailable()" href="#">App Store</a></li>
+        </ul>
+      </section>
+      <section class="iframe-section" onclick="">
+        <h1>NEW: <span>Try out in browser</span> <a href="terminal/">(click here)</a></h1>
+        <ul>
+          <li>Tempoarily not working due to Staszic's server issues with cgi files 30/05/25-??/??/??</li>
+          <li>Performance may vary depending on trafic, your internet connection and the server's mood</li>
+          <li>Please don't overuse/abuse as it runs on the Staszic server to not overload it (and get my account banned)</li>
+          <li>It loads for about 5-10 seconds, and than tries to create a popup that might be blocked by your browser</li>
+          <li>On Android (and maybe IOS) Requieres Hacker's Keyboard with the setting <i>UsePernamentNotification</i> <b>ON</b> (or some other app that can launch the keyboard while in the background) for the keyboard to appear</li> 
+          <li>For an unknown reason, it crashes when you close the colour picker</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="platforms">
+      <h2 style="width: 10em; display: flex;">Dostępne na:</h2>
+      <div id="windows-big">
+        <h3 class="platform-icon" style="color: #1681dd;font-size: xxx-large;height: 1em; width: fit-content;">Windows</h3>
+      </div>
+      <div id="lw-sep"></div>
+      <div id="linux-big">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/800px-Tux.svg.png" alt="Linux" class="platform-icon" style="margin:auto;" />
+        <h3 style="   font-size: xxx-large; color: black;">Linux</h3>
+      </div>
+      <div id="lm-sep"></div>
+        <h3 style="font-size: xxx-large; color: black; position: relative; top: 10%;">MacOS</h3>
+      </div>
+    </section>
+
+    <section class="terminals">
+      <h2>Działa w:</h2>
+      <ul style="display: flex; flex-wrap: wrap;">
+        <li>ConHost&#x2800;</li>
+        <li>Windows Terminal&#x2800;</li>
+        <li>Mintty&#x2800;</li>
+        <li>Hyper&#x2800;</li>
+        <li>ConEmu&#x2800;</li>
+        <li>Cmder&#x2800;</li>
+        <li>Tabby&#x2800;</li>
+        <li>Wave&#x2800;</li>
+        <li>Gnome Terminal&#x2800;</li>
+        <li>Xfce4 Terminal&#x2800;</li>
+        <li>Mate Terminal&#x2800;</li>
+        <li>Konsole&#x2800;</li>
+        <li>UXTerm&#x2800;</li>
+        <li>Terminator&#x2800;</li>
+        <li>Urxvt&#x2800;</li>
+        <li>Terminator&#x2800;</li>
+        <li>iTerm2&#x2800;</li>
+        <li>[MacOS]Terminal&#x2800;</li>
+        <li>I wi&#x0119;cej...</li>
+      </ul>
+    </section>
+
+    <section class="howto">
+      <h2>Jak u&#x017C;ywa&#x0107;?</h2>
+      <p>1. W&#x0142;&#x0105;czy&#x0107; gr&#x0119;<br>2. Klikn&#x0105;&#x0107; przycisk `HELP`<br>3. Zori&#x0119;towa&#x0107; si&#x0119; &#x017C;e nie dzia&#x0142;a<br>4. Good luck</p>
+    </section>
+
+    <section class="issues">
+      <h2>Zgłaszanie błędów:</h2><h4><a href="https://github.com/stas-badzi/c-c-collab/issues">https://github.com/stas-badzi/c-c-collab/issues</a></h4>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact: <a href="mailto:stasbadzi@staszic.waw.pl">stas.badzi@staszic.waw.pl</a></p>
+  </footer>
+
+  <script src="scripts/root.js"></script>
+</body>
+</html>
