@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <cstdint>
+#include "../account-handle.hpp"
 
 enum class game_action : uint8_t {
     player_join,
@@ -16,18 +17,23 @@ enum class game_action : uint8_t {
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
-    assert(argc > 2);
-    string email = argv[2];
-    int gameid = atoi(argv[1]);
+int main() {
+    auto acc = candybank::get_account();
+    int gameid = -1;
+    if (candybank::query.find("gameid") == candybank::query.end()) {
+        cout << "Content-type: text/plain\n\nNo game id specified" << flush;
+        return 0;
+    } else gameid = stoi(candybank::query["gameid"]);
 
     int pipefd = open(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str(), O_WRONLY);
     assert(pipefd >= 0);
 
-    size_t email_len = email.size();
+    size_t email_len = acc.email.size();
     auto action = game_action::player_leave;
     write(pipefd, &action, sizeof(game_action));
     write(pipefd, &email_len, sizeof(size_t));
-    write(pipefd, email.c_str(), email_len);
+    write(pipefd, acc.email.c_str(), email_len);
+    close(pipefd);
+    cout << "Content-type: text/plain\n\nLeave request sent" << flush;
     return 0;
 }

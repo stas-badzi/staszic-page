@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rm cgi-bin/candybank/poker/*.cgi cgi-bin/candybank/*.cgi cgi-bin/*.cgi bin/*.bin bin/candybank/*.bin bin/candybank/poker/*.bin obj/*.o obj/candybank/*.o obj/candybank/sha256/*.o 2>/dev/null || true
+
 gcc -Ofast -o cgi-bin/increment.cgi src/increment.c && chmod 700 cgi-bin/increment.cgi
 
 g++ -Ofast -o cgi-bin/new-game.cgi src/new-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/new-game.cgi
@@ -26,12 +28,13 @@ g++ -o cgi-bin/candybank/resend-email.cgi obj/candybank/mail.o obj/candybank/res
 g++ -Ofast -o cgi-bin/candybank/verify-account.cgi src/candybank/verify-account.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/verify-account.cgi
 g++ -Ofast -o cgi-bin/candybank/login-account.cgi src/candybank/login-account.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/login-account.cgi
 g++ -Ofast -o cgi-bin/candybank/get-candy.cgi src/candybank/get-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/get-candy.cgi
-g++ -Ofast -o bin/candybank/add-candy src/candybank/add-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/add-candy
-g++ -Ofast -o bin/candybank/set-candy.cgi src/candybank/set-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/set-candy.cgi
+g++ -Ofast -o bin/candybank/add-candy.bin src/candybank/add-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/add-candy.bin
+g++ -Ofast -o bin/candybank/set-candy.bin src/candybank/set-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/set-candy.bin
 
 g++ -Ofast -o bin/candybank/poker/startup-game.bin src/candybank/poker/startup-game.cpp -std=c++20 -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/poker/startup-game.bin
-g++ -Ofast -o cgi-bin/candybank/poker/new-game.cgi src/candybank/poker/new-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/new-game.bin
+g++ -Ofast -o cgi-bin/candybank/poker/new-game.cgi src/candybank/poker/new-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/new-game.cgi
 g++ -Ofast -o cgi-bin/candybank/poker/join-game.cgi src/candybank/poker/join-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/join-game.cgi
-g++ -Ofast -o bin/candybank/poker/action-game.bin src/candybank/poker/action-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/poker/action-game.bin
+g++ -Ofast -o cgi-bin/candybank/poker/leave-game.cgi src/candybank/poker/leave-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/leave-game.cgi
+g++ -Ofast -o cgi-bin/candybank/poker/send-action.cgi src/candybank/poker/send-action.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/send-action.cgi
 
 #rm -rf obj

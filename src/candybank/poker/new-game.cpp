@@ -29,6 +29,14 @@ int startupgame(int buyin_amount, int small_blind) {
     fchmod(fileno(userfile), 0600);
     fclose(userfile);
 
+    userfile = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".info").c_str(), "w");
+    if (userfile == 0)
+        return -1;
+    fchmod(fileno(userfile), 0600);
+    fwrite(&buyin_amount, sizeof(int), 1, userfile);
+    fwrite(&small_blind, sizeof(int), 1, userfile);
+    fclose(userfile);
+
 
     userfile = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".log").c_str(), "w");
     if (userfile == 0)
@@ -67,12 +75,21 @@ int startupgame(int buyin_amount, int small_blind) {
             exit(0);
         }
     } else if (pid < 0) {
-        return false;
+        return -1;
     } else {
         int status;
         waitpid(pid, &status, 0);
-        return status == 0;
+        if (status != 0) return -1;
     }
+    while (1) {
+        FILE* infofl = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".info").c_str(), "r");
+        if (infofl) {
+            fclose(infofl);
+            break;
+        } else if (errno == ENOENT) usleep(10);
+        else return -1;
+    }
+    return gameid;
 }
 
 int main() {

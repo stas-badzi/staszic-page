@@ -2,6 +2,7 @@
 #include "account-handle.hpp"
 
 using namespace std;
+using namespace candybank;
 
 int main() {
     struct account acc = get_account();

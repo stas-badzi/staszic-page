@@ -57,15 +57,19 @@ int main(int argc, char *argv[]) {
     int buyin_amount = atoi(argv[2]);
     int small_blind = atoi(argv[3]);
 
+    FILE* infofd = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".info").c_str(), "w");
+    assert(infofd != nullptr);
+    fwrite(&buyin_amount, sizeof(int), 1, infofd);
+    fwrite(&small_blind, sizeof(int), 1, infofd);
+    fclose(infofd);
+
     int pipefd = open(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str(), O_RDWR | O_NONBLOCK);
     assert(pipefd >= 0);
 
     string gamedata_path = "/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".dat";
     FILE* gamedata = fopen(gamedata_path.c_str(), "w");
-    fwrite(&buyin_amount, sizeof(int), 1, gamedata);
-    fwrite(&small_blind, sizeof(int), 1, gamedata);
     size_t min1 = -1;
-    uint8_t zero = 0;
+    game_stage zero = game_stage::none;
     fwrite(&min1, sizeof(size_t), 1, gamedata); // no-player
     fwrite(&min1, sizeof(size_t), 1, gamedata); // no-player
     fwrite(&min1, sizeof(size_t), 1, gamedata); // no-player
@@ -173,8 +177,7 @@ int main(int argc, char *argv[]) {
             }
             int oldpot = pot = 0;
 
-            gamedata = fopen(gamedata_path.c_str(), "r+");
-            fseek(gamedata, sizeof(int)*2, SEEK_SET);
+            gamedata = fopen(gamedata_path.c_str(), "w");
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] >= 0) {
                     auto strsiz = players_email[i].size();
@@ -205,6 +208,8 @@ int main(int argc, char *argv[]) {
                     cout << "Player " << players_email[i] << " run out of candy" << endl;
                 }
 
+            vector<string> dont_join;
+
             // check for join events and discard the rest
             while (1) {
                 game_action action;
@@ -223,6 +228,7 @@ int main(int argc, char *argv[]) {
                         read(pipefd, email, email_len);
                         email[email_len] = '\0';
                         player_queue.push(email);
+                        delete[] email;
                         }break;
                     case game_action::player_leave: {
                         size_t email_len;
@@ -235,6 +241,8 @@ int main(int argc, char *argv[]) {
                                 just_left[i] = true;
                                 break;
                             }
+                        dont_join.push_back(email);
+                        delete[] email;
                         }break;
                     default:
                         break;
@@ -256,6 +264,8 @@ int main(int argc, char *argv[]) {
             while (!player_queue.empty()) {
                 string email = player_queue.front();
                 player_queue.pop();
+                if (find(dont_join.begin(), dont_join.end(), email) != dont_join.end())
+                    continue;
                 char joined = false;
                 for (int i = 0; i < 6; ++i)
                     if (players_email[i] == email)
@@ -273,9 +283,11 @@ int main(int argc, char *argv[]) {
 
             community_cards.clear();
             gamestage = game_stage::none;
+            cout << endl;
+            cout << endl;
+            cout << endl;
         } else if (gamestage > game_stage::none) {
             gamedata = fopen(gamedata_path.c_str(), "r+");
-            fseek(gamedata, sizeof(int)*2, SEEK_SET);
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] >= 0) {
                     auto strsiz = players_email[i].size();
@@ -298,7 +310,7 @@ int main(int argc, char *argv[]) {
 
         actionagain:
             game_action action;
-            if ((nonallin_player_num > 1 || (!finishedstage && players_bets[thisturn] != current_bet)) && nonallin_player_num > 0 && !just_left[thisturn])
+            if ((nonallin_player_num > 1 || (!finishedstage && players_bets[thisturn] != current_bet)) && nonallin_player_num > 0 && !just_left[thisturn] && active_player_num > 1)
                 int siz = readblock(pipefd, &action, sizeof(game_action));
             else if (just_left[thisturn]) action = game_action::play_fold;
             else action = game_action::play_call;
@@ -310,6 +322,7 @@ int main(int argc, char *argv[]) {
                     readblock(pipefd, email, email_len);
                     email[email_len] = '\0';
                     player_queue.push(email);
+                    delete[] email;
                     goto actionagain;}
                 case game_action::player_leave:
                    {size_t email_len;
@@ -322,6 +335,7 @@ int main(int argc, char *argv[]) {
                             just_left[i] = true;
                             break;
                         }
+                    delete[] email;
                     goto actionagain;}
                 case game_action::play_fold:
                     cout << "Fold" << endl;
@@ -400,7 +414,7 @@ int main(int argc, char *argv[]) {
                     while (cards_used[community_card])
                         community_card = random() % 52;
                     cards_used[community_card] = true;
-                    cout << "Community card: " << hand::getcardstring(community_card);
+                    cout << "\nCommunity card: " << hand::getcardstring(community_card);
                     community_cards.push_back(community_card);
                     if (gamestage == game_stage::flop) { // flop +3->+1+2 cards
                         community_card = random() % 52;
@@ -432,7 +446,7 @@ int main(int argc, char *argv[]) {
                 else
                     players_active[i] = false;
             nonallin_player_num = active_player_num;
-            if (active_player_num == 0) return 0;
+            if (active_player_num == 0) break;
 
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] >= 0) {
@@ -485,4 +499,12 @@ int main(int argc, char *argv[]) {
             lastbet_player = -1;
         }
     }
+    cout << "All players left" << endl;
+
+    close(pipefd);
+
+    unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".info").c_str());
+    unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str());
+    unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".dat").c_str());
+    return 0;
 }

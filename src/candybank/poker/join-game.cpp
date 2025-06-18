@@ -18,15 +18,12 @@ enum class game_action : uint8_t {
 using namespace std;
 
 int main() {
-    auto acc = get_account();
+    auto acc = candybank::get_account();
     int gameid = -1;
-    for (auto& param : query)
-        if (param.first == "id")
-            gameid = stoi(param.second);
-    if (gameid == -1) {
+    if (candybank::query.find("gameid") == candybank::query.end()) {
         cout << "Content-type: text/plain\n\nNo game id specified" << flush;
         return 0;
-    }
+    } else gameid = stoi(candybank::query["gameid"]);
 
     int pipefd = open(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str(), O_WRONLY);
     assert(pipefd >= 0);
@@ -36,5 +33,7 @@ int main() {
     write(pipefd, &action, sizeof(game_action));
     write(pipefd, &email_len, sizeof(size_t));
     write(pipefd, acc.email.c_str(), email_len);
+    close(pipefd);
+    cout << "Content-type: text/plain\n\nJoin request sent" << flush;
     return 0;
 }
