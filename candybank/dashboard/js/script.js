@@ -1,10 +1,29 @@
 var candyCount = 0;
 
-function refresh() {
-    candyCount = Math.floor(Math.random() * 100000);
-    updateCandyCount();
-}
-
+let xml = new XMLHttpRequest();
+xml.onreadystatechange = function() {
+    if (xml.readyState == 4 && xml.status == 200) {
+        if (xml.responseText.charCodeAt(0) < 48 || xml.responseText.charCodeAt(0) > 57) {
+            switch (xml.responseText) {
+                case "Not logged in":
+                case "Account not found":
+                case "Incorrect password":
+                    window.location.href = "../login/";
+                    return;
+                case "Account not verified":
+                    let params = new URLSearchParams();
+                    params.append("email", email);
+                    params.append("pass", pass);
+                    window.location.href = "../verify-account/" + params.toString();
+                    return;
+            }
+            console.log(xml.responseText);
+            return;
+        }
+        candyCount = parseInt(xml.responseText);
+        updateCandyCount();
+    }
+};
 let lastCandy = -1;
 function updateCandyCount() {
     if (lastCandy != candyCount) {
@@ -21,5 +40,10 @@ function updateCandyCount() {
         }
     }
 }
-
 updateCandyCount();
+
+function refresh() {
+    xml.open("GET", "../../cgi-bin/candybank/get-candy.cgi", true);
+    xml.send();
+}
+refresh();

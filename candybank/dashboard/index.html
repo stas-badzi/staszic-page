@@ -4,6 +4,7 @@
 	<title>Candy Bank - Dashboard</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../global/styles.css">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 <!--===============================================================================================-->
@@ -45,8 +46,26 @@
 				<span id="candy-count"><span class="value"></span><span class="currency"></span></span>
 			</div>
 
+			<div id="greeting">
+				Hello, <span id="greeting-name">Super Stas</span>!
+			</div>
+			<div id="greet-question">
+				What would you like to do today?
+			</div>
+
+			<div id="options">
+				<div id="option-poker" onclick="window.location.href='../poker-lobby/'">
+					<div id="option-poker-text">
+						Play some poker
+					</div>
+					<img id="option-poker-image" src="../images/poker.jpg">
+				</div>
+			</div>
+
 		<footer>
-			External sources list <a href="../external.html">external.html</a>
+			<div id="external-sources">
+				External sources list <a href="../external.html">external.html</a>
+			</div>
 		</footer>
 		</div>
 	</div>

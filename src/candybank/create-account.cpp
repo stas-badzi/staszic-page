@@ -6,6 +6,7 @@
 #include <fstream>
 #include <random>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "../urihandle.hpp"
 #include "send-verification.hpp"
 using namespace std;
@@ -119,6 +120,7 @@ int main() {
    srand(time(NULL));
    uint32_t code = 100000 + (rand() % 900000); // 100k - 999k
    fwrite(&code, sizeof(uint32_t), 1, userfile); // verification code [0 means verified]
+   fchmod(fileno(userfile), 0600);
    fclose(userfile);
 
    if (int err = send_mail(email, code)) {

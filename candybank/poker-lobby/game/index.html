@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Page</title>
+	<link rel="stylesheet" href="../../global/styles.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    <header>
+    </header>
+    <main>
+        <div class="table">
+            <div id="comcards">
+                <div id="pot">
+                    <p>0</p>
+                </div>
+                <div class="cards">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                    <img class="img3" src="images/card_reverse.svg">
+                    <img class="img4" src="images/card_reverse.svg">
+                    <img class="img5" src="images/card_reverse.svg">
+                </div>
+            </div>
+            <div class="player" id="player1">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 1</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+            <div class="player" id="player2">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 2</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+            <div class="player" id="player3">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 3</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+            <div class="player" id="player4">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 4</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+            <div class="player" id="player5">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 5</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+            <div class="player" id="player6">
+                <div class="bet">
+                    <p>0</p>
+                </div>
+                <div class="hand">
+                    <img class="img1" src="images/card_reverse.svg">
+                    <img class="img2" src="images/card_reverse.svg">
+                </div>
+                <div class="info">
+                    <div class="identity">
+                        <img class="icon" src="images/user.svg">
+                        <p class="name">Player 6</p>
+                    </div>
+                    <p class="money">0</p>
+                </div>
+            </div>
+        </div>
+        <div id="betting">
+            <div class="frame">
+                <button id="fold" onclick="fold()">Fold</button>
+                <button id="call" onclick="call()">Check</button>
+                <button id="bet" onclick="raise()">Raise</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

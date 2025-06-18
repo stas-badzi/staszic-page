@@ -1,0 +1,264 @@
+html, body {
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.table {
+    height: 100%;
+    width: 100%;
+    background-color: green;
+    position: relative;
+}
+
+.bet {
+    text-align: center;
+}
+
+.bet p {
+    margin: unset;
+    margin-bottom: 3%;
+    line-height: 1.0;
+}
+
+#betting {
+    height: 100%;
+    width: 30%;
+    background-color: brown;
+}
+
+#betting .frame {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#betting .frame button {
+    height: 100%;
+    width: 100%;
+    font-size: 2em;
+}
+
+#pot {
+    position: relative;
+    margin-bottom: 3%;
+    top: -50%;
+    left: 50%;
+    width: fit-content;
+    transform: translate(-0em);
+    font-size: 3em;
+    border: 1px solid black;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 1.0;
+}
+
+#pot p {
+    text-wrap: nowrap;
+    margin: unset;
+    overflow: hidden;
+}
+
+#comcards {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 37.5%;
+    height: auto;
+    left: 31.25%;
+    top: 42.5%;
+    align-items: center;
+}
+
+#comcards .cards {
+    display: flex;
+    width: 100%;
+}
+
+#comcards .cards img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#comcards .cards .img1 {
+    left: 80%;
+}
+
+#comcards .cards .img2 {
+    left: 40%;
+}
+
+#comcards .cards .img3 {
+    left: 0%;
+}
+
+#comcards .cards .img4 {
+    left: -40%;
+}
+
+#comcards .cards .img5 {
+    left: -80%;
+}
+
+.player {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: auto;
+    flex-direction: column;
+}
+
+.player .hand {
+    display: flex;
+}
+
+.player .hand img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.player .hand .img1 {
+    left: 50%;
+}
+
+.player .hand .img2 {
+    left: -50%;
+}
+
+.player .info {
+    text-align: center;
+    height: fit-content;
+}
+
+.player .info .identity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+}
+
+.player .info .identity p {
+    text-wrap: nowrap;
+    margin: unset;
+    margin-left: 0.2em;
+}
+
+.player .info .identity img {
+    width: 1em;
+}
+
+.player .info .money {
+    text-align: center;
+    text-wrap: nowrap;
+    margin: unset;
+    margin-top: 3%;
+    margin-left: 1em;
+}
+
+#player1 {
+    bottom: 3%;
+    left: 42.5%;
+}
+
+#player2 {
+    bottom: 15%;
+    left: 5%;
+}
+
+#player3 {
+    top: 15%;
+    left: 5%;
+}
+
+#player4 {
+    top: 3%;
+    right: 42.5%;
+}
+
+#player5 {
+    top: 15%;
+    right: 5%;
+}
+
+#player6 {
+    bottom: 15%;
+    right: 5%;
+}
+
+@media screen and (max-width: 1500px) {
+    #comcards {
+        font-size: 0.8em;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    #comcards {
+        font-size: 0.6em;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    #comcards {
+        font-size: 0.4em;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    main {
+        flex-direction: column;
+    }
+    #betting {
+        width: 100%;
+        height: 30%;
+    }
+    #comcards {
+        width: 50%;
+        left: 25%;
+    }
+    .player {
+        width: 20%;
+    }
+
+    #player1 {
+        left: 40%;
+    }
+    #player4 {
+        right: 40%;
+    }
+    #player2 {
+        bottom: 20%;
+    }
+    #player3 {
+        top: 20%;
+    }
+    #player5 {
+        top: 20%;
+    }
+    #player6 {
+        bottom: 20%;
+    }
+    #betting .frame {
+        flex-direction: row;
+    }
+    #betting .frame button {
+        width: 100%;
+    }
+}

@@ -271,14 +271,12 @@ int main(int argc, char **argv, char **envp)
     return 0;
   }
   printf("Set-Cookie: die%s=1; SameSite=Strict; domain=%s; path=%s\r\n", num, getenv("HTTP_HOST"),"/");
-
-  FILE* fl = fopen("/home/k24_a/stasbadzi/.homepage/internal/update.log", "r+w");
+  setlocale(LC_ALL, "UTF-8");
 
   char *__send0 = getstdin(num);
   char *__send1 = getkeyboard(num);
   char *__send2 = getscreen(num);
 
-  setlocale(LC_ALL, "UTF-8");
   auto send0 = (__send0) ? uri_decode(__send0) : "";
   auto send1 = (__send1) ? uri_decode_cstr(__send1) : pair<char* const,size_t>{"",0};
   auto send2 = (__send2) ? uri_decode_cstr(__send2) : pair<char* const,size_t>{"",0};
@@ -294,13 +292,9 @@ int main(int argc, char **argv, char **envp)
   string get1 = getstderr(num);
 
   if (get0.length() || get1.length()) {
-    fprintf(fl,"Content-type: text/html\n\n%s",uri_encode(get0+get1).c_str());
     printf("Content-type: text/html\n\n%s",uri_encode(get0+get1).c_str());
-    fclose(fl);
   } else {
-    fprintf(fl,"Content-type: text/html\n\n");
     printf("Content-type: text/html\n\n");
-    fclose(fl);
   }
 
   if (__send0) free(__send0-6-strlen(num));

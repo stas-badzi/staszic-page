@@ -21,6 +21,8 @@ struct account {
     bool isadmin; // cannot be changed
 };
 
+std::vector<std::pair<std::string,std::string>> query; 
+
 inline account get_account() {
     using namespace std;
     setlocale(LC_ALL,"UTF-8");
@@ -29,6 +31,7 @@ inline account get_account() {
     string cookies(cookies_cstr);
     vector<string> params = split(cookies, ';');
     string email, password;
+    query.clear();
 
     for (auto& param : params) {
         vector<string> key_value = split(param, '=');
@@ -37,6 +40,7 @@ inline account get_account() {
             email = key_value_pair.second;
         else if (key_value_pair.first == "pass")
             password = key_value_pair.second;
+        else query.push_back(key_value_pair);
     }
     if (email.empty()) {
         cout << "Content-type: text/plain\n\nNot logged in" << flush;

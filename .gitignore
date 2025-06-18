@@ -4,5 +4,6 @@ bin/*
 candybank/storage/accounts/*@*
 candybank/storage/accounts/.usednames
 internal/*
+obj/*
 
 !*.gitkeep
