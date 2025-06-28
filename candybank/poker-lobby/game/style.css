@@ -122,6 +122,19 @@ main {
     flex-direction: column;
 }
 
+.thisturn {
+    border: 1px solid black;
+    border-radius: 0.5px;
+}
+
+.nonactive {
+    opacity: 0.7;
+}
+
+.nonexistent {
+    visibility: hidden;
+}
+
 .player .hand {
     display: flex;
 }
@@ -201,6 +214,15 @@ main {
     right: 5%;
 }
 
+#joinleave {
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+}
+
 @media screen and (max-width: 1500px) {
     #comcards {
         font-size: 0.8em;
@@ -260,5 +282,40 @@ main {
     }
     #betting .frame button {
         width: 100%;
+    }
+}
+
+@media screen and (orientation: portrait) and (max-width: 550px) {
+    #comcards {
+        width: 80%;
+        left: 12%;
+        top: 38%;
+    }
+
+    .player {
+        width: 32%;
+    }
+
+    #player1 {
+        left: 34%;
+    }
+    #player4 {
+        right: 34%;
+    }
+    #player2 {
+        bottom: 15%;
+        left: 1%;
+    }
+    #player3 {
+        top: 15%;
+        left: 1%;
+    }
+    #player5 {
+        top: 15%;
+        right: 1%;
+    }
+    #player6 {
+        bottom: 15%;
+        right: 1%;
     }
 }

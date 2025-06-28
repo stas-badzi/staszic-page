@@ -11,10 +11,14 @@ xml.onreadystatechange = function() {
                     window.location.href = "../login/";
                     return;
                 case "Account not verified":
+                    let xml = new XMLHttpRequest();
+                    xml.open("GET",window.location.origin + "/cgi-bin/candybank/get-emailpass.cgi" + window.location.search, false);
+                    xml.send();
+                    let emailpass = JSON.parse(xml.responseText);
                     let params = new URLSearchParams();
-                    params.append("email", email);
-                    params.append("pass", pass);
-                    window.location.href = "../verify-account/" + params.toString();
+                    params.append("email", emailpass.email);
+                    params.append("pass", emailpass.pass);
+                    window.location.href = "../../verify-account/" + params.toString();
                     return;
             }
             console.log(xml.responseText);

@@ -30,7 +30,8 @@ namespace candybank {
         using namespace std;
         setlocale(LC_ALL,"UTF-8");
         auto cookies_cstr = getenv("HTTP_COOKIE");
-        if (cookies_cstr == nullptr) exit(0);
+        if (cookies_cstr == nullptr)
+		cookies_cstr = (char *)"";
         string cookies(cookies_cstr);
         vector<string> params = split(cookies, ';');
         string email, password;

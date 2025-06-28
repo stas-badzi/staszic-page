@@ -104,6 +104,8 @@ int main() {
     fread(&thisstage, sizeof(game_stage), 1, userfile);
     int pot = -1;
     int thisplayer = -1;
+    int raised = -1;
+    int last_bet = -1;
     vector<uint8_t> community_cards;
     if (thisstage != game_stage::none) {
         size_t comcardnum;
@@ -112,8 +114,13 @@ int main() {
                 if (players[i].has_value())
                     players[i]->cards.first = players[i]->cards.second = -1;
             fread(&thisplayer, sizeof(int), 1, userfile);
-            thisplayer = (thisplayer - our_playerid) % 6;
+	    if (our_playerid >= 0)
+                thisplayer = (thisplayer - our_playerid + 6) % 6;
             fread(&pot, sizeof(int), 1, userfile);
+            if (thisstage != game_stage::showdown) {
+                fread(&raised, sizeof(int), 1, userfile);
+                fread(&last_bet, sizeof(int), 1, userfile);
+            }
             comcardnum = 3*(thisstage >= game_stage::flop) + (thisstage >= game_stage::turn) + (thisstage >= game_stage::river);
         } else fread(&comcardnum, sizeof(size_t), 1, userfile);
         for (int i=0; i<comcardnum; ++i) {
@@ -146,9 +153,19 @@ int main() {
     cout << "],\"pot\":";
     if (pot > 0) cout << pot;
     else cout << "null";
+    cout << ",\"raised\":";
+    if (raised >= 0) cout << raised;
+    else cout << "null";
+    cout << ",\"last_bet\":";
+    if (last_bet >= 0) cout << last_bet;
+    else cout << "null";
     cout << ",\"active_player\":";
     if (thisplayer >= 0) cout << thisplayer;
     else cout << "null";
+    cout << ",\"user_exists\":";
+    if (our_playerid >= 0) cout << "true";
+    else cout << "false";
+
     cout << "}";
     return 0;
 }

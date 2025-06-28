@@ -27,6 +27,7 @@ g++ -o cgi-bin/candybank/resend-email.cgi obj/candybank/mail.o obj/candybank/res
 
 g++ -Ofast -o cgi-bin/candybank/verify-account.cgi src/candybank/verify-account.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/verify-account.cgi
 g++ -Ofast -o cgi-bin/candybank/login-account.cgi src/candybank/login-account.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/login-account.cgi
+g++ -Ofast -o cgi-bin/candybank/get-emailpass.cgi src/candybank/get-emailpass.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/get-emailpass.cgi
 g++ -Ofast -o cgi-bin/candybank/get-candy.cgi src/candybank/get-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/get-candy.cgi
 g++ -Ofast -o bin/candybank/add-candy.bin src/candybank/add-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/add-candy.bin
 g++ -Ofast -o bin/candybank/set-candy.bin src/candybank/set-candy.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 bin/candybank/set-candy.bin

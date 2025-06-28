@@ -134,8 +134,10 @@ int main(int argc, char *argv[]) {
 
             vector<pair<uint,uint8_t>> maxwins;
             for (int i = 0; i < 6; ++i)
-                if (players_active[i])
+                if (players_active[i]) {
                     maxwins.push_back({players_maxwin[i], i});
+                    players_bets[i] = 0;
+                }
             sort(maxwins.begin(), maxwins.end());
 
             for (int i = 1; i < maxwins.size(); ++i)
@@ -169,10 +171,14 @@ int main(int argc, char *argv[]) {
                 for (int j = 0; j < winners.size(); ++j)
                     if (leftover > 0) {
                         players_candy[winners[j]] += perwin + 1;
+                        players_bets[winners[j]] += perwin + 1;
                         cout << "Player " << players_email[winners[j]] << " wins " << perwin+1 << " candy" << endl;
                         leftover--;
-                    } else {players_candy[winners[j]] += perwin; 
-                        cout << "Player " << players_email[winners[j]] << " wins " << perwin << " candy" << endl;}
+                    } else {
+                        players_candy[winners[j]] += perwin;
+                        players_bets[winners[j]] += perwin;
+                        cout << "Player " << players_email[winners[j]] << " wins " << perwin << " candy" << endl;
+                    }
                 if (pot == 0) break;
             }
             int oldpot = pot = 0;
@@ -187,8 +193,7 @@ int main(int argc, char *argv[]) {
                     fwrite(&players_cards[i].second, sizeof(uint8_t), 1, gamedata);
                     fwrite(&players_candy[i], sizeof(int), 1, gamedata);
                     fwrite(&players_bets[i], sizeof(int), 1, gamedata);
-                    bool isactive = true;
-                    fwrite(&isactive, sizeof(bool), 1, gamedata); // every player is active on showdown
+                    fwrite(&players_active[i], sizeof(bool), 1, gamedata); 
                 } else fwrite(&min1, sizeof(size_t), 1, gamedata);
             fwrite(&gamestage, sizeof(game_stage), 1, gamedata);
             auto comcardsiz = community_cards.size();
@@ -201,6 +206,7 @@ int main(int argc, char *argv[]) {
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] == 0) {
                     players_candy[i] = -1; // kick players with no candy
+                    players_email[i].clear();
                     cout << "Player " << players_email[i] << " ran out of candy" << endl;
                 }
 
@@ -253,6 +259,7 @@ int main(int argc, char *argv[]) {
                     // add candy to bank account
                     // ...
                     players_candy[i] = -1; // make slot empty
+                    players_email[i].clear();
                     cout << "Player " << players_email[i] << " left the game" << endl;
                 }
             
@@ -298,6 +305,8 @@ int main(int argc, char *argv[]) {
             fwrite(&gamestage, sizeof(game_stage), 1, gamedata);
             fwrite(&thisturn, sizeof(int), 1, gamedata);
             fwrite(&pot, sizeof(int), 1, gamedata);
+            fwrite(&current_bet, sizeof(int), 1, gamedata);
+            fwrite(&last_bet, sizeof(int), 1, gamedata);
             for (int i = 0; i < community_cards.size(); ++i)
                 fwrite(&community_cards[i], sizeof(uint8_t), 1, gamedata);
 

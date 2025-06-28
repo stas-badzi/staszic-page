@@ -71,7 +71,7 @@ int main() {
 
         bool isactive;
         fread(&isactive, sizeof(bool), 1, userfile);
-        if (!isactive) {
+        if (!isactive && our_playerid == i) {
             cout << "Content-type: text/plain\n\nYou have already folded" << flush;
             return 0;
         }
