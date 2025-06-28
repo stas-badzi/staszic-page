@@ -68,6 +68,13 @@ int main() {
         void* discard = malloc(sizeof(uint8_t)*2+sizeof(int)*2); // 2 cards + money + betted
         fread(discard, sizeof(uint8_t)*2+sizeof(int)*2, 1, userfile);
         free(discard);
+
+        bool isactive;
+        fread(&isactive, sizeof(bool), 1, userfile);
+        if (!isactive) {
+            cout << "Content-type: text/plain\n\nYou have already folded" << flush;
+            return 0;
+        }
     }
     if (our_playerid == -1) {
         cout << "Content-type: text/plain\n\nYou are not in this game" << flush;
@@ -86,6 +93,7 @@ int main() {
         cout << "Content-type: text/plain\n\nIt's not your turn" << flush;
         return 0;
     }
+    fclose(userfile);
 
     int pipefd = open(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str(), O_WRONLY);
     assert(pipefd >= 0);

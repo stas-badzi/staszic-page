@@ -187,25 +187,21 @@ int main(int argc, char *argv[]) {
                     fwrite(&players_cards[i].second, sizeof(uint8_t), 1, gamedata);
                     fwrite(&players_candy[i], sizeof(int), 1, gamedata);
                     fwrite(&players_bets[i], sizeof(int), 1, gamedata);
+                    bool isactive = true;
+                    fwrite(&isactive, sizeof(bool), 1, gamedata); // every player is active on showdown
                 } else fwrite(&min1, sizeof(size_t), 1, gamedata);
             fwrite(&gamestage, sizeof(game_stage), 1, gamedata);
+            auto comcardsiz = community_cards.size();
+            fwrite(&comcardsiz, sizeof(size_t), 1, gamedata);
             for (int i = 0; i < community_cards.size(); ++i)
                 fwrite(&community_cards[i], sizeof(uint8_t), 1, gamedata);
-
-            // ... print cards
-            for (int i = 0; i < 6; ++i)
-                if (players_candy[i] >= 0) {
-                    fwrite(&players_cards[i].first, sizeof(uint8_t), 1, gamedata);
-                    fwrite(&players_cards[i].second, sizeof(uint8_t), 1, gamedata);
-                } else fwrite(&min1, sizeof(uint8_t), 1, gamedata);
-
             fclose(gamedata);
 
             sleep(10);
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] == 0) {
                     players_candy[i] = -1; // kick players with no candy
-                    cout << "Player " << players_email[i] << " run out of candy" << endl;
+                    cout << "Player " << players_email[i] << " ran out of candy" << endl;
                 }
 
             vector<string> dont_join;
@@ -297,6 +293,7 @@ int main(int argc, char *argv[]) {
                     fwrite(&players_cards[i].second, sizeof(uint8_t), 1, gamedata);
                     fwrite(&players_candy[i], sizeof(int), 1, gamedata);
                     fwrite(&players_bets[i], sizeof(int), 1, gamedata);
+                    fwrite(&players_active[i], sizeof(bool), 1, gamedata);
                 } else fwrite(&min1, sizeof(size_t), 1, gamedata);
             fwrite(&gamestage, sizeof(game_stage), 1, gamedata);
             fwrite(&thisturn, sizeof(int), 1, gamedata);
@@ -499,11 +496,10 @@ int main(int argc, char *argv[]) {
             lastbet_player = -1;
         }
     }
-    cout << "All players left" << endl;
-
-    close(pipefd);
+    cout << "All players left - Closing room" << endl;
 
     unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".info").c_str());
+    close(pipefd);
     unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".pipe").c_str());
     unlink(("/home/k24_a/stasbadzi/.homepage/candybank/storage/poker/games/" + to_string(gameid) + ".dat").c_str());
     return 0;

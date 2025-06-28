@@ -36,5 +36,6 @@ g++ -Ofast -o cgi-bin/candybank/poker/new-game.cgi src/candybank/poker/new-game.
 g++ -Ofast -o cgi-bin/candybank/poker/join-game.cgi src/candybank/poker/join-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/join-game.cgi
 g++ -Ofast -o cgi-bin/candybank/poker/leave-game.cgi src/candybank/poker/leave-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/leave-game.cgi
 g++ -Ofast -o cgi-bin/candybank/poker/send-action.cgi src/candybank/poker/send-action.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/send-action.cgi
+g++ -Ofast -o cgi-bin/candybank/poker/get-state.cgi src/candybank/poker/get-state.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/get-state.cgi
 
 #rm -rf obj
