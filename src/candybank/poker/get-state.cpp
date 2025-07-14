@@ -60,6 +60,7 @@ int main() {
     
     deque<optional<player>> players;
     int our_playerid = -1;
+    int players_active = 0;
     for (int i=0; i<6; ++i) {
         size_t email_len;
         fread(&email_len, sizeof(size_t), 1, userfile);
@@ -89,6 +90,7 @@ int main() {
         fread(&thisplayer.money, sizeof(int), 1, userfile);
         fread(&thisplayer.bet, sizeof(int), 1, userfile);
         fread(&thisplayer.active, sizeof(bool), 1, userfile);
+        players_active += thisplayer.active;
 
         players.push_back(thisplayer);
     }
@@ -114,7 +116,7 @@ int main() {
                 if (players[i].has_value())
                     players[i]->cards.first = players[i]->cards.second = -1;
             fread(&thisplayer, sizeof(int), 1, userfile);
-	    if (our_playerid >= 0)
+	        if (our_playerid >= 0)
                 thisplayer = (thisplayer - our_playerid + 6) % 6;
             fread(&pot, sizeof(int), 1, userfile);
             if (thisstage != game_stage::showdown) {
@@ -122,7 +124,12 @@ int main() {
                 fread(&last_bet, sizeof(int), 1, userfile);
             }
             comcardnum = 3*(thisstage >= game_stage::flop) + (thisstage >= game_stage::turn) + (thisstage >= game_stage::river);
-        } else fread(&comcardnum, sizeof(size_t), 1, userfile);
+        } else {
+            for (int i=(our_playerid >= 0); i<6; ++i) // hide non-bet players' cards
+                if (players[i].has_value() && (!(players[i]->active) || players_active < 2))
+                    players[i]->cards.first = players[i]->cards.second = -1;
+            fread(&comcardnum, sizeof(size_t), 1, userfile);
+        }
         for (int i=0; i<comcardnum; ++i) {
             uint8_t card; fread(&card, sizeof(uint8_t), 1, userfile);
             community_cards.push_back(card);

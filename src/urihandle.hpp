@@ -31,6 +31,15 @@ inline std::vector<std::string> split(const std::string& s, char delimiter) {
    return split(s, std::string(1, delimiter));
 }
 
+template<size_t N> std::string getchars(FILE* file) {
+   std::string ret;
+   char buf[N+1];
+   fread(buf, sizeof(char), N, file);
+   buf[N] = '\0';
+   ret = buf;
+   return ret;
+}
+
 inline std::string getnext(FILE* file) {
    char c;
    std::string next;

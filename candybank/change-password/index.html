@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Candy Bank - Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../global/styles.css">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" action="/cgi-bin/candybank/login-hash.cgi">
+					<input type="hidden" name="redirect" value="change-password.cgi">
+
+					<span class="login100-form-title p-b-26">
+						<span>Hello, <span id="greeting-name"></span>!</span>
+					</span>
+					<span class="login100-form-title p-b-48">
+						<img src="../images/logo.png" class="logo">
+						<h1 class="name">
+							<span style="color: darkmagenta;">C</span><span style="color: red;">a</span><span style="color: yellow;">n</span><span style="color: blue;">d</span><span style="color: lime;">y</span><br><span style="color: red;">B</span><span style="color: blue;">a</span><span style="color: lime;">n</span><span style="color: darkmagenta;">k</span>
+						</h1>
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Password cannot be empty" data-validate-2="Password may only contain ASCII">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" id="input100pass" type="password" name="pass">
+						<span class="focus-input100" data-placeholder="New Password"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password again" data-validate-2="Doesn't match password">
+						<span class="btn-show-pass">
+							<i class="zmdi zmdi-eye"></i>
+						</span>
+						<input class="input100" id="input100confpass" type="password" name="confpass">
+						<span class="focus-input100" data-placeholder="Repeat New Password"></span>
+					</div>
+
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button class="login100-form-btn" onclick="change_password(event)">
+								Change password
+							</button>
+						</div>
+					</div>
+
+					<div class="text-center p-t-115">
+						<p class="txt2">
+							<a class="txt1" href="../dashboard/">Back </a>to home page
+						</p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/bootstrap/js/popper.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/daterangepicker/moment.min.js"></script>
+	<script src="../vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../vendor/sha256.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script src="js/script.js"></script>
+
+</body>
+</html>

@@ -69,7 +69,7 @@ namespace candybank {
             cout << "Content-type: text/plain\n\nInternal server error " << errno << flush;
             exit(0);
         }
-        string check_password = getnext(userfile);
+        string check_password = getchars<64>(userfile);
         if (check_password != password) {
             cout << "Content-type: text/plain\n\nIncorrect password" << flush;
             fclose(userfile);

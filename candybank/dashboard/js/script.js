@@ -3,7 +3,7 @@ var candyCount = 0;
 let xml = new XMLHttpRequest();
 xml.onreadystatechange = function() {
     if (xml.readyState == 4 && xml.status == 200) {
-        if (xml.responseText.charCodeAt(0) < 48 || xml.responseText.charCodeAt(0) > 57) {
+        if (xml.responseText[0] != '{') {
             switch (xml.responseText) {
                 case "Not logged in":
                 case "Account not found":
@@ -24,7 +24,9 @@ xml.onreadystatechange = function() {
             console.log(xml.responseText);
             return;
         }
-        candyCount = parseInt(xml.responseText);
+        let responseJSON = JSON.parse(xml.responseText);
+        candyCount = parseInt(responseJSON.candy);
+        document.getElementById("greeting-name").innerText = responseJSON.username;
         updateCandyCount();
     }
 };
@@ -47,7 +49,7 @@ function updateCandyCount() {
 updateCandyCount();
 
 function refresh() {
-    xml.open("GET", "../../cgi-bin/candybank/get-candy.cgi", true);
+    xml.open("GET", "../../cgi-bin/candybank/account-data.cgi", true);
     xml.send();
 }
 refresh();

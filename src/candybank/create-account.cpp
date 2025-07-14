@@ -31,7 +31,7 @@ int main() {
       else if (key_value_pair.first == "user")
          username = key_value_pair.second;
    }
-   if (email.empty() || password.empty() || username.empty())
+   if (email.empty() || password.empty() || username.empty() || password.size() != 64)
       return 0;
    
    FILE* usednames;
@@ -115,7 +115,7 @@ int main() {
       return 0;
    }
 
-   fwrite(password.c_str(), 1, password.size()+1, userfile);
+   fwrite(password.c_str(), 1, 64, userfile);
    fwrite(username.c_str(), 1, username.size()+1, userfile);
    srand(time(NULL));
    uint32_t code = 100000 + (rand() % 900000); // 100k - 999k

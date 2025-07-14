@@ -38,7 +38,7 @@ int main() {
          cout << "Location: ../../candybank/login?errortype=internal&errorval=" << errno << "\n\n";
       return 0;
    }
-   string check_password = getnext(userfile);
+   string check_password = getchars<64>(userfile);
    if (check_password != password) {
       cout << "Location: ../../candybank/login?error=emailpass\n\n";
       return 0;

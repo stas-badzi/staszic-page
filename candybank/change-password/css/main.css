@@ -1,3 +1,7 @@
+
+
+
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -19,365 +23,6 @@
 @font-face {
   font-family: Poppins-SemiBold;
   src: url('../../fonts/poppins/Poppins-SemiBold.ttf'); 
-}
-
-@font-face {
-  font-family: Material-Iconic-Design;
-  src: url('../../fonts/iconic/fonts/Material-Design-Iconic-Font.ttf');
-}
-
-footer {
-  display: flex;
-  justify-content: center;
-}
-
-#change-password {
-  align-self: center;
-  position: relative;
-  margin-top: 3em;
-}
-
-#external-sources {
-  position: absolute;
-  bottom: 0;
-  width: 30%;
-  text-align: center;
-  border-radius: 13%;
-  background-color: rgb(32, 157, 179);
-  border-color: rgb(32, 157, 179);
-  color: gray;
-  border-style: solid;
-  border-width: 0.5em;
-  margin: 1em 0.5em 0.3em 0.5em;
-  padding: 0.5em 1em 0.5em 1em;
-}
-
-#candy {
-  right: 80px;
-  position: absolute;
-  border-style: solid;
-  border-width: 0.5em;
-  background-color: darkmagenta;
-  border-color: darkmagenta;
-  width: fit-content;
-  position: absolute;
-  top: 2.5%;
-  right: 1.5%;
-  display: flex;
-}
-
-#candy-plus-circle {
-  border-radius: 100%;
-  border-color: rgb(89, 12, 161);
-  border-style: solid;
-  border-width: 1.5em;
-  width: 2em;
-  position: relative;
-  height: 2em;
-  margin-left: -1.8em;
-  margin-top: -0.5em;
-  margin-bottom: -0.5em;
-  margin-right: 1em;
-}
-
-#candy-plus {
-  font-size: xxx-large;
-  font-family: Poppins-Light;
-  position: absolute;
-  top: -0.75em;
-  left: -0.46em;
-  color: #f2f2f2;
-  margin-left: 0.1em;
-}
-
-#candy-count {
-  color: #f2f2f2;
-  font-size: xx-large;
-  margin-bottom: -2em;
-  margin-top: -0.25em;
-}
-
-#candy-count .currency {
-  font-size: 0.7em;
-  position: relative;
-  top: -0.15em;
-}
-
-.itemshake {
-  animation: shake 0.15s;
-}
-
-#code-error {
-  visibility: hidden;
-  color: red;
-  font-size: small;
-}
-
-.small-br {
-  position: absolute;
-}
-
-
-.limiter {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  margin: 0 auto;
-}
-
-.name {
-  font-size: 3em;
-}
-
-.container-login100 {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background: #f2f2f2;  
-}
-
-#refresh {
-  width: 5em;
-  height: 5em;
-  margin-top: -35px;
-  position: absolute;
-  margin-left: -29px;
-  cursor: pointer;
-}
-
-#greeting {
-  font-size: xx-large;
-  text-align: center;
-}
-
-#greet-question {
-  font-size: large;
-  text-align: center;
-}
-
-.wrap-login100 {
-  width: 100%;
-  background: #a7e7cf;
-  margin: 1em;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 47px 45px 33px 45px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-  -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
-}
-
-.wrap-wrap-code {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/*------------------------------------------------------------------
-[ Form ]*/
-
-.login100-form {
-  width: 100%;
-}
-
-.login100-form-title, .login100-form-title2 {
-  display: flex;
-  font-family: Poppins-Bold;
-  font-size: 23px;
-  color: #333333;
-  line-height: 1.2;
-  text-align: center;
-  justify-content: center;
-}
-
-.login100-form-title2 {
-  font-family: Poppins-ExtraLight;
-  font-weight: bold;
-}
-
-.subtitle {
-  display: flex;
-  font-family: Poppins-Regular;
-  font-size: 15px;
-  color: #333333;
-  line-height: 1.2;
-  text-align: center;
-  justify-content: center;
-}
-
-.subtitle i {
-  font-family: Poppins-Italic;
-}
-.login100-form-title img {
-  width: 3em;
-  height: fit-content;
-  position: relative;
-  top: 0.25em;
-  margin-right: 0.7em;
-  margin-top: -0.1em;
-}
-
-#options {
-  display: flex;
-  justify-content: center;
-  margin-top: 3%;
-}
-
-#option-poker {
-  width: 30%;
-  cursor: pointer;
-}
-
-@keyframes poker-gradient-off {
-  0% { color: rgb(97, 158, 127); }
-  100% { color: rgb(216, 208, 179); }
-}
-
-#option-poker-text {
-  text-align: center;
-  background-color: rgb(41, 56, 86);
-  color: rgb(216, 208, 179);
-  animation: poker-gradient-off 0.3s;
-}
-
-@keyframes poker-gradient-on {
-  0% { color: rgb(216, 208, 179); }
-  100% { color: rgb(97, 158, 127); }
-}
-
-#option-poker-text:hover {
-  color: rgb(97, 158, 127);
-  animation: poker-gradient-on 0.5s;
-}
-
-#option-poker-image {
-  width: 100%;
-}
-
-@media screen and (max-width: 950px) {
-  #external-sources {
-    position: absolute;
-    bottom: 0;
-    width: 50%;
-    text-align: center;
-    border-radius: 13%;
-    background-color: rgb(32, 157, 179);
-    border-color: rgb(32, 157, 179);
-    color: gray;
-    border-style: solid;
-    border-width: 0.5em;
-    margin: 1em 0.5em 1.5em 0.5em;
-    padding: 0.5em 1em 0.5em 1em;
-  }
-  .wrap-login100 {
-    padding: 47px 15px 33px 15px;
-  }
-  .wrap-wrap-code {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  #refresh {
-    margin-top: -5.5%;
-    scale: 0.8;
-  }
-  .login100-form-title {
-    margin-top: -70px;
-  }
-  #candy {
-    margin-top: 70px;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .login100-form-title {
-    width: fit-content;
-    left: 92px;
-    position: relative;
-  }
-}
-
-@media screen and (max-width: 660px) {
-  #external-sources {
-    position: absolute;
-    bottom: 0;
-    width: 80%;
-    text-align: center;
-    border-radius: 13%;
-    background-color: rgb(32, 157, 179);
-    border-color: rgb(32, 157, 179);
-    color: gray;
-    border-style: solid;
-    border-width: 0.5em;
-    margin: 1em 0.5em 1.5em 0.5em;
-    padding: 0.5em 1em 0.5em 1em;
-  }
-  .small-br {
-    position: relative;
-  }
-  .login100-form-title img {
-    width: 5.2em;
-    top: 0.7em;
-  }
-  .login100-form-title {
-    left: auto;
-  }
-  #candy {
-    margin-top: 145px;
-  }
-  #refresh {
-    left: 82%;
-    scale: 1.0;
-    margin-top: 2.2%;
-    margin-left: 3%;
-    cursor: pointer;
-  }
-}
-
-@keyframes shake {
-  0% { transform: translateX(-1%); }
-  3.3333333333333333333333333333333% { transform: translateX(-2%); }
-  6.6666666666666666666666666666666% { transform: translateX(-4%); }
-  10% { transform: translateX(-2%); }
-  13.3333333333333333333333333333333% { transform: translateX(-1%); }
-  16.6666666666666666666666666666666% { transform: translateX(0%); }
-  20% { transform: translateX(1%); }
-  23.3333333333333333333333333333333% { transform: translateX(2%); }
-  26.6666666666666666666666666666666% { transform: translateX(4%); }
-  30% { transform: translateX(2%); }
-  33.3333333333333333333333333333333% { transform: translateX(1%); }
-  36.6666666666666666666666666666666% { transform: translateX(0%); }
-  40% { transform: translateX(-0.5%); }
-  43.3333333333333333333333333333333% { transform: translateX(-1%); }
-  46.6666666666666666666666666666666% { transform: translateX(-2%); }
-  50% { transform: translateX(-1%); }
-  53.3333333333333333333333333333333% { transform: translateX(-0.5%); }
-  56.6666666666666666666666666666666% { transform: translateX(0%); }
-  60% { transform: translateX(0.5%); }
-  63.3333333333333333333333333333333% { transform: translateX(1%); }
-  66.6666666666666666666666666666666% { transform: translateX(2%); }
-  70% { transform: translateX(1%); }
-  73.3333333333333333333333333333333% { transform: translateX(0.5%); }
-  76.6666666666666666666666666666666% { transform: translateX(0%); }
-  80% { transform: translateX(-0.25%); }
-  83.3333333333333333333333333333333% { transform: translateX(-0.5%); }
-  86.6666666666666666666666666666666% { transform: translateX(-0.25%); }
-  90% { transform: translateX(0%); }
-  93.3333333333333333333333333333333% { transform: translateX(0.25%); }
-  96.6666666666666666666666666666666% { transform: translateX(0.5%); }
-  100% { transform: translateX(0.25%); }
 }
 
 
@@ -439,10 +84,6 @@ p {
 ul, li {
 	margin: 0px;
 	list-style-type: none;
-}
-
-.wrap-wrap-code {
-  display: flex;
 }
 
 
@@ -515,6 +156,69 @@ iframe {
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
+
+.limiter {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-login100 {
+  width: 100%;  
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #f2f2f2;  
+}
+
+.wrap-login100 {
+  width: 390px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 77px 55px 33px 55px;
+
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+
+/*------------------------------------------------------------------
+[ Form ]*/
+
+.login100-form {
+  width: 100%;
+}
+
+.login100-form-title {
+  display: flex;
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+  justify-content: center;
+}
+
+.login100-form-title img {width: 2.5em;
+  height: fit-content;
+  position: relative;
+  top: 0.25em;
+}
+
+.login100-form-title h1 {
+  margin-left: 0.4em;
+}
+
 /*------------------------------------------------------------------
 [ Input ]*/
 
@@ -523,12 +227,11 @@ iframe {
   position: relative;
   border-bottom: 2px solid #adadad;
   margin-bottom: 37px;
-  margin-left: 0.4em;
 }
 
 .input100 {
   font-family: Poppins-Regular;
-  font-size: xxx-large;
+  font-size: 15px;
   color: #555555;
   line-height: 1.2;
 
@@ -537,7 +240,6 @@ iframe {
   height: 45px;
   background: transparent;
   padding: 0 5px;
-  text-align: center;
 }
 
 /*---------------------------------------------*/ 
@@ -717,6 +419,12 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Responsive ]*/
+
+@media (max-width: 576px) {
+  .wrap-login100 {
+    padding: 77px 15px 33px 15px;
+  }
+}
 
 
 
