@@ -181,7 +181,7 @@ int main(int argc, char *argv[]) {
                     }
                 if (pot == 0) break;
             }
-            int oldpot = pot = 0;
+            oldpot = pot = 0;
 
             gamedata = fopen(gamedata_path.c_str(), "w");
             for (int i = 0; i < 6; ++i)
@@ -206,8 +206,9 @@ int main(int argc, char *argv[]) {
             for (int i = 0; i < 6; ++i)
                 if (players_candy[i] == 0) {
                     players_candy[i] = -1; // kick players with no candy
-                    players_email[i].clear();
+                    players_bets[i] = 0;
                     cout << "Player " << players_email[i] << " ran out of candy" << endl;
+                    players_email[i].clear();
                 }
 
             vector<string> dont_join;
@@ -259,8 +260,9 @@ int main(int argc, char *argv[]) {
                     // add candy to bank account
                     // ...
                     players_candy[i] = -1; // make slot empty
-                    players_email[i].clear();
+                    players_bets[i] = 0;
                     cout << "Player " << players_email[i] << " left the game" << endl;
+                    players_email[i].clear();
                 }
             
             // join queue
@@ -400,9 +402,12 @@ int main(int argc, char *argv[]) {
                 for (int i = 0; i < 6; ++i)
                     if (players_active[i] && players_candy[i] == 0 && players_bets[i] > 0) {
                         players_maxwin[i] = oldpot;
-                        for (int j = 0; j < 6; ++j)
-                            if (players_active[j])
-                                players_maxwin[i] += min(players_bets[i], players_bets[j]);
+                        cout << "Old pot: " << oldpot << ", Our bet: " << players_bets[i] << endl;
+                        for (int j = 0; j < 6; ++j) {
+                            cout << "Player " << players_email[j] << " has bet of " << players_bets[j] << ", max win up by: " << (min(players_bets[i], players_bets[j])) << endl;
+                            players_maxwin[i] += min(players_bets[i], players_bets[j]);
+                        }
+                        cout << "Player " << players_email[i] << " has max win of " << players_maxwin[i] << endl;
                     }
 
                 oldpot = pot;

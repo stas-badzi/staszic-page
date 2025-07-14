@@ -1,0 +1,51 @@
+html {
+    overflow: scroll;
+}
+
+body {
+    background-color: darkred;
+}
+
+#refresh {
+    position: absolute;
+    font-size: xxx-large;
+    width: 1.4em;
+    right: 0.2em;
+}
+
+#list {
+    position: relative;
+    display: block;
+}
+
+#list button:not(#newgame) {
+    width: 60%;
+    display: block;
+    left: 20%;
+    position: relative;
+    font-size: xx-large;
+    margin-top: 0.1em;
+    background-color: green;
+    color: white;
+}
+
+#newgame {
+    background-color: black;
+    color: white;
+    position: relative;
+    font-size: xxx-large;
+    width: 70%;
+    left: 15%;
+    top: 0.1em;
+    margin-bottom: 0.5em;
+}
+
+#list h1 {
+    color: blue;
+    text-shadow: 2px 2px 2px white;
+    position: relative;
+    font-size: xxx-large;
+    top: 0.1em;
+    margin-bottom: 0.5em;
+    text-align: center;
+}

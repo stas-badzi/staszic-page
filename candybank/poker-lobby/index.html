@@ -9,19 +9,13 @@
         <script src="script.js"></script>
     </head>
 
-    <body>
+    <body onload="findgames()">
         <main>
+            <img src="../images/icons/home.ico" id="dashboard" onclick="window.location.href=window.location.origin + '/candybank/dashboard'">
+            <img src="../images/refresh.svg" id="refresh" onclick="window.location.reload()">
             <div id="list">
-                <a href="game/">Poker 1</a>
-                <a>Poker 2</a>
-                <a>Poker 3</a>
-                <a>Poker 4</a>
-                <a>Poker 5</a>
-                <a>Poker 6</a>
-                <a>Poker 7</a>
-                <a>Poker 8</a>
-                <a>Poker 9</a>
-                <a>Poker 10</a>
+                <button id="newgame" onclick="newgame()">New Game</button>
+                <h1> Active Games </h1>
             </div>
         </main>
     </body>

@@ -185,6 +185,9 @@ server.onreadystatechange = () => {
                 params.append("pass", emailpass.pass);
                 window.location.href = "../../verify-account/" + params.toString();
                 return;
+            case "Game not found":
+                window.location.href = window.location.origin + window.location.pathname + "../";
+                return;
         }
 
         if (server.responseText.length > 0) {
@@ -342,6 +345,7 @@ function Tick() {
         }            
         if (__last__cards[i+1][1] != cards[i+1][1]) {
             __last__cards[i+1][1] = cards[i+1][1];
+            var pi = document.getElementById("player" + (i+1).toString());
             var cardi2 = pi.getElementsByClassName("hand")[0].getElementsByClassName("img2")[0];
             if (cards[i+1][1] == null)
                 cardi2.src = "images/card_reverse.svg";
