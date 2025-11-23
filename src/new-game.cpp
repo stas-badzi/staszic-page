@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include "urihandle.hpp"
+#include "security.h"
 using namespace std;
 
 bool startup_game(vector<string>& args, string path) {
@@ -141,6 +142,7 @@ int main(int argc, char **argv, char **envp)
   setlocale(LC_ALL, "UTF-8");
   auto argsv = (args) ? parseJSONarray(uri_decode(args)) : vector<string>();
   if (args) free(args-5);
+  DefaultAccessControl();
   printf("Set-Cookie: args=; SameSite=Strict; domain=%s; path=%s\r\n", getenv("HTTP_HOST"),"/");
   printf("Content-type: text/html\n\n%d", newpid(argsv));
   return 0;

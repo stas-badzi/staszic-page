@@ -39,7 +39,7 @@ int main() {
    FILE* userfile = fopen(("/home/k24_a/stasbadzi/.homepage/candybank/storage/accounts/" + email).c_str(), "r");
    bool skipusercheck = false;
    if (userfile) {
-      getnext(userfile); // password
+      getchars<64>(userfile); // password
       string oldusername = getnext(userfile); // username
       uint32_t code;
       fread(&code, sizeof(uint32_t), 1, userfile);

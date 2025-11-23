@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html style="height:100%;overflow: hidden;">
+    <body style="margin:0;height:100%;overflow: hidden;">
+
+        <p>
+        <button id="start" onclick="startCapture()">Start Capture</button>
+        <button id="stop">Stop Capture</button>
+        </p>
+
+            <video autoplay></video>
+            <iframe width="100%" height="100%" src="https://stasbadzi.w.staszic.waw.pl"></iframe>
+
+        <script>
+            const displayMediaOptions = {
+                video: {
+                    displaySurface: "window",
+                },
+                preferCurrentTab: true,
+            };
+
+            async function startCapture() {
+                try {
+                    const stream =
+                        await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+                    const [track] = stream.getVideoTracks();
+                    const restrictionTarget = await RestrictionTarget.fromElement(document.querySelector("iframe"));
+                        await track.restrictTo(restrictionTarget);
+                    document.querySelector("video").srcObject = stream;
+                } catch (err) {
+                    console.error(err);
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

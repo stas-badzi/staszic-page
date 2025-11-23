@@ -1,6 +1,6 @@
 #!/bin/sh
 
-rm cgi-bin/candybank/poker/*.cgi cgi-bin/candybank/*.cgi cgi-bin/*.cgi bin/*.bin bin/candybank/*.bin bin/candybank/poker/*.bin obj/*.o obj/candybank/*.o obj/candybank/sha256/*.o 2>/dev/null || true
+rm cgi-bin/candybank/poker/*.cgi cgi-bin/candybank/*.cgi cgi-bin/candybank/*.html cgi-bin/*.cgi bin/*.bin bin/candybank/*.bin bin/candybank/poker/*.bin obj/*.o obj/candybank/*.o obj/candybank/sha256/*.o 2>/dev/null || true
 
 gcc -Ofast -o cgi-bin/increment.cgi src/increment.c && chmod 700 cgi-bin/increment.cgi
 
@@ -39,5 +39,8 @@ g++ -Ofast -o cgi-bin/candybank/poker/join-game.cgi src/candybank/poker/join-gam
 g++ -Ofast -o cgi-bin/candybank/poker/leave-game.cgi src/candybank/poker/leave-game.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/leave-game.cgi
 g++ -Ofast -o cgi-bin/candybank/poker/send-action.cgi src/candybank/poker/send-action.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/send-action.cgi
 g++ -Ofast -o cgi-bin/candybank/poker/get-state.cgi src/candybank/poker/get-state.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/get-state.cgi
+g++ -Ofast -o cgi-bin/candybank/poker/get-info.cgi src/candybank/poker/get-info.cpp -I /home/k24_a/stasbadzi/.local/include -L /home/k24_a/stasbadzi/.local/lib -lcurl && chmod 700 cgi-bin/candybank/poker/get-info.cgi
+
+ln src/candybank/logout-account.html cgi-bin/candybank/logout-account.html
 
 #rm -rf obj

@@ -31,10 +31,26 @@ footer {
   justify-content: center;
 }
 
-#change-password {
+#account-actions {
   align-self: center;
-  position: relative;
   margin-top: 3em;
+  width: 30%;
+  display: flex;
+}
+
+#account-actions > * {
+  width: 100%;
+  text-align: center;
+  border: 2px solid darkcyan;
+  margin-left: -1px;
+}
+
+#account-actions:first-child {
+  margin-left: 0;
+}
+
+#account-actions a {
+  display: block;
 }
 
 #external-sources {

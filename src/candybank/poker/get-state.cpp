@@ -82,7 +82,7 @@ int main() {
             cout << "Content-type: text/plain\n\nError reading player file" << flush;
             return 0;
         }
-        getnext(playerfile); // skip password
+        getchars<64>(playerfile); // skip password
         thisplayer.username = getnext(playerfile);
 
         fread(&thisplayer.cards.first, sizeof(uint8_t), 1, userfile);

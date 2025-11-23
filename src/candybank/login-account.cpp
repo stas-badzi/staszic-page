@@ -43,7 +43,7 @@ int main() {
       cout << "Location: ../../candybank/login?error=emailpass\n\n";
       return 0;
    }
-   int offset = check_password.size() + getnext(userfile).size() + 2; // ignore username
+   int offset = 64 + getnext(userfile).size() + 2; // ignore username
    uint32_t code;
    fread(&code, sizeof(uint32_t), 1, userfile);
    if (code != 0) {

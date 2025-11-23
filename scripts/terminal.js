@@ -3,7 +3,7 @@ const fakescreen_h = document.getElementById("fake-screen-h");
 const fakescreen_w = document.getElementById("fake-screen-w");
 const input = document.getElementById("pageinput");
 
-var xml = new XMLHttpRequest();
+var xml = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 var gameid = -1;
 var string = "";
 var keys = "";
@@ -86,7 +86,7 @@ var running = true;
 
 window.onbeforeunload = function (e) {
     if (!running) return undefined;
-    let _xml = new XMLHttpRequest();
+    let _xml = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
     _xml.open("GET", `/cgi-bin/kill-game/${gameid}.cgi`);
     _xml.send();
     return undefined;

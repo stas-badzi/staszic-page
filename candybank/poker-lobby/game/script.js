@@ -166,7 +166,7 @@ function run_locked(func, ...args) {
 var server = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 
 server.onreadystatechange = () => {
-  if (server.readyState === XMLHttpRequest.DONE) {
+  if (server.readyState == 4) {
     const status = server.status;
     if (status === 0 || (status >= 200 && status < 400)) {
         switch (server.responseText) {
@@ -176,7 +176,7 @@ server.onreadystatechange = () => {
                 window.location.href = "../../login";
                 return;
             case "Account not verified":
-                let xml = new XMLHttpRequest();
+                let xml = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
                 xml.open("GET",window.location.origin + "/cgi-bin/candybank/get-emailpass.cgi" + window.location.search, false);
                 xml.send();
                 let emailpass = JSON.parse(xml.responseText);
@@ -242,7 +242,7 @@ server.send();
 
 var client = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 client.onreadystatechange = () => {
-    if (client.readyState === XMLHttpRequest.DONE) {
+    if (client.readyState == 4) {
         const status = client.status;
         if (status === 0 || (status >= 200 && status < 400)) {
             switch (client.responseText) {
@@ -264,7 +264,6 @@ client.onreadystatechange = () => {
 };
 
 let lastbet = 1;
-let ourraised = 0;
 let isourturn = false;
 
 let ourcards = [
@@ -273,7 +272,6 @@ let ourcards = [
 
 let raiseamount = 1;
 let israising = false;
-let ourmoney = 1000;
 let isallin = false;
 
 var loadedImages = [];
@@ -380,7 +378,7 @@ function Tick() {
     if (!israising) {
         let call = document.getElementById("call");
         if (raised > inserted[0])
-            if (ourmoney <= raised - inserted[0])
+            if (money[0] <= raised - inserted[0])
                 call.innerHTML = "Call <span style='color:red'>ALL IN</span>";
             else call.innerText = "Call " + (raised - inserted[0]).toString() + "🍬";
         else

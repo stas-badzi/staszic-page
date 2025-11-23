@@ -2,6 +2,7 @@
 #include <cassert>
 #include <string>
 #include <unistd.h>
+#include <stdint.h>
 #include "../urihandle.hpp"
 
 using namespace std;
@@ -22,7 +23,8 @@ int main(int argc, char *argv[]) {
         cout << "Internal server error " << errno << '\n';
         return 0;
     }
-    size_t candy_offset = getnext(userfile).size() + getnext(userfile).size() + 6; // password + '\0' + username + '\0' + sizeof(uint32_t)
+    getchars<64>(userfile);
+    size_t candy_offset = 64 + getnext(userfile).size() + 6; // password + '\0' + username + '\0' + sizeof(uint32_t)
 
     uint32_t code;
     fread(&code, sizeof(uint32_t), 1, userfile);

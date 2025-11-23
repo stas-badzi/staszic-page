@@ -2,7 +2,13 @@ let params = new URLSearchParams(window.location.search);
 let email = params.get("email");
 let password = params.get("pass");
 if (email && password)
-    window.location.pathname = window.location.pathname + "../../cgi-bin/candybank/login-account.cgi";
+    window.location.pathname = "/cgi-bin/candybank/login-account.cgi";
+else {
+    let xml = new XMLHttpRequest();
+    xml.open("GET","/cgi-bin/candybank/account-data.cgi",false);
+    xml.send();
+    if (xml.responseText != "Account not found" && xml.responseText != "Incorrect password" && xml.responseText != "Not logged in") window.location.href = "../dashboard"
+}
 
 function iscorrect(str) {
     for (let i=0; i<str.length; ++i)

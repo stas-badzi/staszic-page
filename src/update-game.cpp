@@ -11,7 +11,9 @@
 #include <sys/ioctl.h>
 #include <wchar.h>
 #include <assert.h>
+#include <stdint.h>
 #include "urihandle.hpp"
+#include "security.h"
 using namespace std;
 
 bool strbegwith(const char* str, const char* beg, const char* beg2 = NULL) {
@@ -259,6 +261,7 @@ int main(int argc, char **argv, char **envp)
     return EXIT_FAILURE;
   }
 
+  DefaultAccessControl();
   printf("Set-Cookie: stdin%s=; SameSite=Strict; domain=%s; path=%s\r\n", num, getenv("HTTP_HOST"),"/");
   printf("Set-Cookie: keyboard%s=; SameSite=Strict; domain=%s; path=%s\r\n", num, getenv("HTTP_HOST"),"/");
   printf("Set-Cookie: screen%s=; SameSite=Strict; domain=%s; path=%s\r\n", num, getenv("HTTP_HOST"),"/");

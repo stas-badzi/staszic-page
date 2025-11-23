@@ -1,8 +1,8 @@
-**.cgi
+cgi-bin/**
 bin/*
 candybank/storage/accounts/*
 candybank/storage/accounts/*
-candybank/storage/poker/games/*
+candybank/storage/poker/games/**
 internal/*
 obj/*
 

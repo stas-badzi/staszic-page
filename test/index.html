@@ -32,7 +32,7 @@
 	function get(id) {
 		return document.getElementById(id);
 	}
-	let xhr = new XMLHttpRequest();
+	let xhr = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && xhr.status == 200) {
 			increment2();
@@ -43,7 +43,7 @@
 		xhr.send();
 	}
 
-	let xhr2 = new XMLHttpRequest();
+	let xhr2 = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr2.onreadystatechange = function() {
 		if (xhr2.readyState == 4 && xhr2.status == 200) {
 			get("output").innerHTML = decodeURIComponent(xhr2.responseText);

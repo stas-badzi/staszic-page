@@ -1,5 +1,6 @@
-function set_cookie(name, value) {
-    document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; SameSite=Strict; domain=${window.location.host}; path=/`
+function set_cookie(name, value, path) {
+    if (!path) path = '/';
+    document.cookie = `${encodeURIComponent(name)}=${encodeURIComponent(value)}; SameSite=Strict; domain=${window.location.host}; path=${path}`
 }
 
 function get_cookie(name) {

@@ -21,16 +21,17 @@ function findgames() {
                 elem.onclick = function () {
                     window.location.href = window.location.origin + window.location.pathname + "game/?gameid=" + this.classList[0];
                 };
+                let xhrJSON = JSON.parse(xhr.responseText);
                 elem.classList.add(gameid);
-                elem.innerText = "Poker " + gameid;
+                elem.innerText = "Game #" + gameid + " (buyin: " + xhrJSON.buyin + ", small blind: " + xhrJSON.blind + ")";
                 gameslist.appendChild(elem);
             } else console.warn(xhr.responseText);
             gameid++;
-            if (gameid <= maxgame) {xhr.open("GET", "../../cgi-bin/candybank/poker/get-state.cgi?gameid=" + gameid, true);xhr.send();}
+            if (gameid <= maxgame) {xhr.open("GET", "../../cgi-bin/candybank/poker/get-info.cgi?gameid=" + gameid, true);xhr.send();}
         }
     }
 
-    xhr.open("GET", "../../cgi-bin/candybank/poker/get-state.cgi?gameid=" + gameid, true);
+    xhr.open("GET", "../../cgi-bin/candybank/poker/get-info.cgi?gameid=" + gameid, true);
     xhr.send();
 }
 

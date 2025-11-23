@@ -1,6 +1,6 @@
 var candyCount = 0;
 
-let xml = new XMLHttpRequest();
+let xml = new (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 xml.onreadystatechange = function() {
     if (xml.readyState == 4 && xml.status == 200) {
         if (xml.responseText[0] != '{') {
@@ -11,7 +11,7 @@ xml.onreadystatechange = function() {
                     window.location.href = "../login/";
                     return;
                 case "Account not verified":
-                    let xml = new XMLHttpRequest();
+                    let xml = new (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
                     xml.open("GET",window.location.origin + "/cgi-bin/candybank/get-emailpass.cgi" + window.location.search, false);
                     xml.send();
                     let emailpass = JSON.parse(xml.responseText);
