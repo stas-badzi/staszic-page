@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/terminal.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Load the depend's scripts -->
+    <script src="cookie.js"></script>
+    <script src="myjson.js"></script>
+    <script src="key.js"></script><!-- This one is also required by script.js, so don't remove -->
+    <!-- Load the implementation -->
+    <script src="implementation.js"></script>
 </head>
 <body>
+    <!-- You can move this div anywhere you want (I think at least - not tested yet) -->
     <div id="screen-wrapper">
         <p id="screen" class="screen monospace"><span class="style space">#</span></p>
         <p id="fake-screen-h" class="screen monospace">
@@ -16,10 +24,10 @@
         </p>
     </div>
 
-    <textarea id="pageinput" oninput="HandleInput()" autofocus></textarea>
-    <script src="/scripts/cookie.js"></script>
-    <script src="/scripts/key.js"></script>
-    <script src="/scripts/myjson.js"></script>
-    <script src="/scripts/terminal.js"></script>
+    <!-- no inputs will work on this page, 'cause this one is constantly being given focus ([TODO] - add a function to toggle that on and off or do it only when screen-wrapper has focus) -->
+    <textarea id="pageinput" oninput="WebTerm_HandleInput()" autofocus></textarea>
+
+    <!-- Load the script -->
+    <script src="script.js"></script>
 </body>
 </html>
